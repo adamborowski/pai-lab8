@@ -20,44 +20,47 @@ import javafx.scene.control.Label;
  * @author adam
  */
 public class FXMLDocumentController implements Initializable {
-    
+
     @FXML
     private Label label;
-    
+
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Przetasowane wieże:\n");
-        for(Tower i:delegat.randomizeTowers())
-        {
-            sb.append(towerToString(i)).append("\n");
-        }
-        label.setText(sb.toString());
+        RandomizeTowersActivator activator = new RandomizeTowersActivator();
+        activator.activate((towers) -> {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Przetasowane wieże:\n");
+            for (Tower i : towers) {
+                sb.append(towerToString(i)).append("\n");
+            }
+            label.setText(sb.toString());
+        });
+        label.setText(label.getText()+"\nAktywowano wywołanie usługi...");
     }
     private BusinessDelegate delegat;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         delegat = new BusinessDelegate();
         StringBuilder sb = new StringBuilder();
         sb.append("Wieże:\n");
-        for(Tower i:delegat.getTowers())
-        {
+        for (Tower i : delegat.getTowers()) {
             sb.append(towerToString(i)).append("\n");
         }
         sb.append("Pojazdy:\n");
-        for(Car i:delegat.getCars())
-        {
+        for (Car i : delegat.getCars()) {
             sb.append(carToString(i)).append("\n");
         }
         label.setText(sb.toString());
-    }    
-    private String towerToString(Tower tower){
-        return "\tWieża "+tower.getTower()+" o wysokości: "+tower.getHeight()+"m.";
     }
-    
-    private String carToString(Car car){
-        return "\tPojazd "+car.getName()+" o cenie: "+car.getPrice()+"PLN.";
+
+    private String towerToString(Tower tower) {
+        return "\tWieża " + tower.getTower() + " o wysokości: " + tower.getHeight() + "m.";
     }
-    
+
+    private String carToString(Car car) {
+        return "\tPojazd " + car.getName() + " o cenie: " + car.getPrice() + "PLN.";
+    }
+
 }
