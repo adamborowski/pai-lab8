@@ -17,11 +17,12 @@ import pl.adamborowski.pai8.entity.Car;
  * @author adam
  */
 @WebService(serviceName = "CarService")
-public class CarService {
+public class CarService implements ICarService {
 
     @EJB CarEnterprise carEnterprise;
     @WebMethod
-    public List<Car> getTowers(){
+    @Override
+    public List<Car> getCars(){
         return carEnterprise.getCars();
     }
 }

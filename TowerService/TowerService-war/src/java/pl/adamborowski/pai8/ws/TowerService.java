@@ -18,11 +18,17 @@ import pl.adamborowski.pai8.entity.Tower;
  * @author adam
  */
 @WebService(serviceName = "TowerService")
-public class TowerService {
+public class TowerService implements ITowerService {
 
     @EJB TowerEnterprise towerEnterprise;
     @WebMethod
+    @Override
     public List<Tower> getTowers(){
         return towerEnterprise.getTowers();
+    }
+    @WebMethod
+    @Override
+    public List<Tower> randomizeTowers(){
+        return towerEnterprise.randomizeTowers();
     }
 }

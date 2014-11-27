@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-LocatorService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/LocatorService"/>
+        <property name="wsdl-LocatorService" location="xml-resources/web-service-references/LocatorService/wsdl/localhost_8080/ServiceLocator-war/LocatorService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LocatorService" destdir="${build.generated.dir}/jax-wsCache/LocatorService" wsdl="${wsdl-LocatorService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServiceLocator-war/LocatorService?wsdl" xnocompile="true" xendorsed="true" package="client.ws">
+            <depends file="${wsdl-LocatorService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/LocatorService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/LocatorService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-LocatorService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/LocatorService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/client/ws"/>
+    </target>
+    <target name="wsimport-client-TowerService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/TowerService"/>
+        <property name="wsdl-TowerService" location="xml-resources/web-service-references/TowerService/wsdl/localhost_8080/TowerService-war/TowerService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/TowerService" destdir="${build.generated.dir}/jax-wsCache/TowerService" wsdl="${wsdl-TowerService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/TowerService-war/TowerService?wsdl" xnocompile="true" xendorsed="true" package="client.stub.tower">
+            <depends file="${wsdl-TowerService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/TowerService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/TowerService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-TowerService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/TowerService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/client/stub/tower"/>
+    </target>
+    <target name="wsimport-client-CarService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/CarService"/>
+        <property name="wsdl-CarService" location="xml-resources/web-service-references/CarService/wsdl/localhost_8080/CarService-war/CarService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CarService" destdir="${build.generated.dir}/jax-wsCache/CarService" wsdl="${wsdl-CarService}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/CarService-war/CarService?wsdl" xnocompile="true" xendorsed="true" package="client.stub.car">
+            <depends file="${wsdl-CarService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/CarService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/CarService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-CarService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/CarService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/client/stub/car"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-LocatorService, wsimport-client-TowerService, wsimport-client-CarService"/>
+</project>
